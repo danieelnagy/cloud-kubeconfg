@@ -1,0 +1,4 @@
+   kubectl --kubeconfig=c:\temp\linode.yaml create secret docker-registry regcred    --docker-server=git.systementor.se    --docker-username=yacloud    --docker-password=yacloud1    --docker-email=yacloud@systementor.se
+
+
+

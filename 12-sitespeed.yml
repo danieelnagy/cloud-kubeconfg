@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sitespeed
+  namespace: yatest
+  labels:
+    app: sitespeed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sitespeed
+  template:
+    metadata:
+      labels:
+        app: sitespeed
+    spec:
+      containers:
+        - name: pythonapi
+          image: git.systementor.se/yacloud/frontend
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RUNENVIRONMENT
+              value: Production
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: yatest
+  name: sitespeed-service
+  labels:
+    app: sitespeed
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: sitespeed
+  sessionAffinity: None

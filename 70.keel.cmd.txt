@@ -1,0 +1,1 @@
+kubectl --kubeconfig=c:\temp\linode.yaml apply -f "https://sunstone.dev/keel?namespace=keel&username=stefantesty0508&password=stefansecret0508&tag=latest"
