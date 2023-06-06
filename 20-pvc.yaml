@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  namespace: yatest
+  namespace: ya
   name: pvc-mysql
 spec:
   accessModes:

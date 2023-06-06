@@ -1,0 +1,7 @@
+kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f .\01-namespace.yaml
+
+kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f .\20-pvc.yaml
+
+kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f .\30-mysql.yaml
+
+kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f 10-site.yml

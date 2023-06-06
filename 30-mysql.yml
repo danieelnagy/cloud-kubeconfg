@@ -15,7 +15,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: yatest
+  namespace: ya
 spec:
   replicas: 1
   selector:
@@ -37,7 +37,7 @@ spec:
       #           - "mysqlnode"
 
       terminationGracePeriodSeconds: 30
-      hostname: mysql01
+      hostname: mysql
       containers:
       - name: mysql
         image: mysql
@@ -58,7 +58,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: yatest
+  namespace: ya
 spec:
   selector:
     app: mysql

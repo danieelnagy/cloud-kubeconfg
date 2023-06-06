@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-backend
+  namespace: ya
+  labels:
+    app: cloud-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-backend
+  template:
+    metadata:
+      labels:
+        app: cloud-backend
+    spec:
+      containers:
+        - name: gosite
+          image: git.systementor.se/daniel.nagy/cloud-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RUNENVIRONMENT
+              value: Production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ya
+  name: cloud-backend-service
+  labels:
+    app: cloud-backend
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: cloud-backend
+  sessionAffinity: None
