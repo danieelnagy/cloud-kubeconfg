@@ -16,10 +16,10 @@ spec:
         app: cloud-frontend
     spec:
       containers:
-        - name: gosite
+        - name: gositefrontend
           image: git.systementor.se/daniel.nagy/cloud-frontend:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 3000
           env:
             - name: RUNENVIRONMENT
               value: Production
@@ -37,7 +37,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 3000
   selector:
     app: cloud-frontend
   sessionAffinity: None

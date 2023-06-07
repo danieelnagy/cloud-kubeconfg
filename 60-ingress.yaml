@@ -27,5 +27,6 @@ spec:
                 name: cloud-frontend-service
                 port:
                   number: 80
-    
 
+
+                  
