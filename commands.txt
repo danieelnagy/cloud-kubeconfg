@@ -5,3 +5,6 @@ kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f .\20-pvc.yaml
 kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f .\30-mysql.yaml
 
 kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml apply -f 10-site.yml
+
+
+kubectl --kubeconfig=./yacloudkluster-kubeconfig.yaml  get all -n ingress-nginx
