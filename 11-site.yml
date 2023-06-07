@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-frontend
+  namespace: ya
+  labels:
+    app: cloud-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-frontend
+  template:
+    metadata:
+      labels:
+        app: cloud-frontend
+    spec:
+      containers:
+        - name: gosite
+          image: git.systementor.se/daniel.nagy/cloud-frontend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RUNENVIRONMENT
+              value: Production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ya
+  name: cloud-frontend-service
+  labels:
+    app: cloud-frontend
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: cloud-frontend
+  sessionAffinity: None
